@@ -1,11 +1,12 @@
 import React from 'react';
 import Navigation from '../../Shared/Navigation/Navigation';
+import GreetingSection from '../GreetingSection/GreetingSection';
 
 const Home = () => {
     return (
         <div>
             <Navigation />
-            <h1>This is Home Page!</h1>
+            <GreetingSection />
         </div>
     );
 };
