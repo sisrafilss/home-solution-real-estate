@@ -1,15 +1,18 @@
 import React from "react";
 
 import apartment from "../../../images/rent-home.jpg";
+import SectionHead from "../../Shared/SectionHead/SectionHead";
 
 const RentHome = () => {
+  const sectionHead = {
+    title: "Are you Looking for a Home to Rent?",
+    subTitle: "Home Renting is easy and Simple",
+  };
+
   return (
-    <div style={{marginTop: '100px'}}>
-      <div className="text-center mt-5 container">
-        <h2 className="display-6 fw-bold">
-          Are you Looking for a Home to Rent?
-        </h2>
-        <p className="lead">Home Renting is easy and Simple</p>
+    <div style={{ marginTop: "100px" }}>
+      <div>
+        <SectionHead sectionHead={sectionHead} />
       </div>
       <div className="container my-5">
         <div className="row">
@@ -25,7 +28,8 @@ const RentHome = () => {
                 Find & Rent your <br /> Dream Home
               </h3>
               <p className="lead">
-                Finding and Renting Home are super simple and secure with Home Solution
+                Finding and Renting Home are super simple and secure with Home
+                Solution
               </p>
               <button className="btn btn-primary">Explore Buying</button>
             </div>

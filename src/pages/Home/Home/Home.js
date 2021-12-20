@@ -4,6 +4,7 @@ import Navigation from "../../Shared/Navigation/Navigation";
 import Banner from "../Banner/Banner";
 import GreetingSection from "../GreetingSection/GreetingSection";
 import RentHome from "../RentHome/RentHome";
+import Testimonials from "../Testimonials/Testimonials";
 import TopProjects from "../TopProjects/TopProjects";
 import UpCommingProjects from "../UpCommingProjects/UpCommingProjects";
 
@@ -16,6 +17,7 @@ const Home = () => {
       <TopProjects />
       <RentHome />
       <UpCommingProjects />
+      <Testimonials />
       <Footer />
     </div>
   );
