@@ -1,16 +1,15 @@
 import React from "react";
 
-import "./GreetingSection.css";
-import apartment from "../../../images/apartment.jpg";
+import apartment from "../../../images/rent-home.jpg";
 
-const GreetingSection = () => {
+const RentHome = () => {
   return (
-    <div>
+    <div style={{marginTop: '100px'}}>
       <div className="text-center mt-5 container">
         <h2 className="display-6 fw-bold">
-          Welcome to <span className="text-success">Home Solution</span>
+          Are you Looking for a Home to Rent?
         </h2>
-        <p className="lead">A complete package of Home Solution</p>
+        <p className="lead">Home Renting is easy and Simple</p>
       </div>
       <div className="container my-5">
         <div className="row">
@@ -21,12 +20,12 @@ const GreetingSection = () => {
           </div>
           <div className="col-md-6">
             <div className="p-5">
-              <span className="d-block mb-2">Buy Home</span>
+              <span className="d-block mb-2">Rent Home</span>
               <h3>
-                Find, Buy & Own Your <br /> Dream Home
+                Find & Rent your <br /> Dream Home
               </h3>
               <p className="lead">
-                Explore from Apartments, land, builder floors, villas and more
+                Finding and Renting Home are super simple and secure with Home Solution
               </p>
               <button className="btn btn-primary">Explore Buying</button>
             </div>
@@ -37,4 +36,4 @@ const GreetingSection = () => {
   );
 };
 
-export default GreetingSection;
+export default RentHome;
