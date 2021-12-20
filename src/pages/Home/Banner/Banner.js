@@ -36,6 +36,8 @@ const Banner = () => {
         ></button>
       </div>
       <div className="carousel-inner">
+
+
         <div className="carousel-item active fitpal-carousel-item">
           <div
             style={{ backgroundImage: `url(${slide1})` }}
@@ -52,6 +54,8 @@ const Banner = () => {
             </Link>
           </div>
         </div>
+
+
         <div className="carousel-item  fitpal-carousel-item">
           <div
             style={{ backgroundImage: `url(${slide2})` }}
@@ -68,6 +72,8 @@ const Banner = () => {
             </Link>
           </div>
         </div>
+
+
         <div className="carousel-item  fitpal-carousel-item">
           <div
             style={{ backgroundImage: `url(${slide3})` }}
@@ -84,6 +90,8 @@ const Banner = () => {
             </Link>
           </div>
         </div>
+
+        
       </div>
       <button
         className="carousel-control-prev"

@@ -6,7 +6,7 @@ const Navigation = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a className="navbar-brand" href="#">
           <img src={logo} alt="" width="50" height="40" />
           <span className="text-white ms-1" style={{ fontSize: "1.2rem" }}>
             HomeSolution

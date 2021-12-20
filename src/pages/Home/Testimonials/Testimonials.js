@@ -1,33 +1,17 @@
 import Testimonial from "../Testimonial/Testimonial";
-
-import israfil_photo from "../../../images/Israfil-Hossen-Image.jpg";
 import SectionHead from "../../Shared/SectionHead/SectionHead";
-
-const testimonials = [
-  {
-    id: 1,
-    name: "Israfil Hossen",
-    description:
-      "Sed ipsum posuere nunc libero pellentesque vitae ultrices posuere. Praesent justo dui laoreet dignissim",
-    image: israfil_photo,
-  },
-  {
-    id: 2,
-    name: "Israfil Hossen",
-    description:
-      "Sed ipsum posuere nunc libero pellentesque vitae ultrices posuere. Praesent justo dui laoreet dignissim",
-    image: israfil_photo,
-  },
-  {
-    id: 3,
-    name: "Israfil Hossen",
-    description:
-      "Sed ipsum posuere nunc libero pellentesque vitae ultrices posuere. Praesent justo dui laoreet dignissim",
-    image: israfil_photo,
-  },
-];
+import { useEffect, useState } from "react";
 
 const Testimonials = () => {
+
+  const [testimonials, setTestimonials] = useState([]);
+
+  useEffect(() => {
+    fetch('https://mighty-woodland-85261.herokuapp.com/testimonials')
+    .then(res => res.json())
+    .then(data => setTestimonials(data));
+  }, [])
+
   const sectionHead = {
     title: "What Our Customers are Saying",
     subTitle: "Take a loot, what our customers are saying about our services",
@@ -42,7 +26,7 @@ const Testimonials = () => {
         <div className="row g-4">
           {/* Couldn't use slider for lack of time */}
           {testimonials.map((testimonial) => (
-            <Testimonial key={testimonial.id} testimonial={testimonial} />
+            <Testimonial key={testimonial._id} testimonial={testimonial} />
           ))}
         </div>
       </div>
