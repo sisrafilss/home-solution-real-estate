@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { loadTopProjects } from "../../../store/topProjects";
 import SingleProject from "../SingleProject/SingleProject";
 
 const TopProjects = () => {
-  const [topProjects, setTopProjects] = useState([]);
+  const dispatch = useDispatch();
+  const topProjects = useSelector((state) => state.entities.topProjects.list);
 
   useEffect(() => {
-    fetch("https://mighty-woodland-85261.herokuapp.com/top-projects")
-      .then((res) => res.json())
-      .then((data) => setTopProjects(data));
+    dispatch(loadTopProjects());
   }, []);
+
+  console.log(topProjects);
 
   return (
     <div>
