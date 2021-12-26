@@ -1,16 +1,17 @@
 import Testimonial from "../Testimonial/Testimonial";
 import SectionHead from "../../Shared/SectionHead/SectionHead";
 import { useEffect, useState } from "react";
+import { loadTestimonials } from "../../../store/testimonials";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Testimonials = () => {
-
-  const [testimonials, setTestimonials] = useState([]);
+  const dispatch = useDispatch();
+  const testimonials = useSelector((state) => state.entities.testimonials.list);
 
   useEffect(() => {
-    fetch('https://mighty-woodland-85261.herokuapp.com/testimonials')
-    .then(res => res.json())
-    .then(data => setTestimonials(data));
-  }, [])
+    dispatch(loadTestimonials());
+  }, []);
 
   const sectionHead = {
     title: "What Our Customers are Saying",

@@ -39,7 +39,7 @@ export const loadTopProjects = () =>
     url,
     onStart: topProjectsRequested.type,
     onSuccess: topProjectsReceived.type,
-    onFailed: topProjectsRequestedFailed.type
+    onFaoniled: topProjectsRequestedFailed.type
   });
 
 // Selectors

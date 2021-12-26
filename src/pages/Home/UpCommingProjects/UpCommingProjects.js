@@ -1,15 +1,17 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { loadUpcommingProjects } from "../../../store/upcommingProjects";
+
 import SingleProject from "../SingleProject/SingleProject";
 
 const UpCommingProjects = () => {
+  const dispatch = useDispatch();
+  const upCommingProjects = useSelector((state) => state.entities.uocommingProjects.list);
 
-    const [upCommingProjects, setUpCommingProjects] = useState([]);
-
-    useEffect(() => {
-        fetch('https://mighty-woodland-85261.herokuapp.com/upcomming-projects')
-        .then(res => res.json())
-        .then(data => setUpCommingProjects(data));
-    }, [])
+  useEffect(() => {
+    dispatch(loadUpcommingProjects());
+  }, []);
 
   return (
     <div className="my-5">
