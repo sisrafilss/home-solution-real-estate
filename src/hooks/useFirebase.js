@@ -17,36 +17,29 @@ initializeAuthentication();
 
 const useFirebase = () => {
   const dispatch = useDispatch();
-
   //   Get user info from Store (user)
   const user = useSelector((state) => state.entities.user);
-
   const auth = getAuth();
 
-  // Register new user using email and password
+  // Register new user
   const registerUser = (name, email, password) => {
     createUserWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        // Set user to user store
-        const newUser = { email, displayName: name };
-        dispatch(
-          setUser({
-            email,
-            displayName: name,
-            photoURL: "",
-          })
-        );
-        // Send User data to server
-
-        // Set user to firebase
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
         updateProfile(auth.currentUser, {
           displayName: name,
         })
           .then(() => {})
           .catch((error) => {});
       })
-      .catch((error) => {})
-      .finally(() => {});
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+      });
   };
 
   //   Login with Google
@@ -56,7 +49,7 @@ const useFirebase = () => {
       .then((result) => {
         // console.log(result.user);
         const user = result.user;
-        // Set user info to store
+        // console.log(users.displayName);
         dispatch(
           setUser({
             email: user.email,
@@ -73,9 +66,7 @@ const useFirebase = () => {
   const logOut = () => {
     signOut(auth)
       .then(() => {
-        dispatch(
-          setUser({})
-        );
+        dispatch(setUser({}));
       })
       .catch((error) => {
         // An error happened.

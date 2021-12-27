@@ -1,26 +1,29 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import useFirebase from "../../../hooks/useFirebase";
 import logo from "../../../images/logo.png";
 
 const Register = () => {
-  // const { user, registerUser, authError, setAuthError } = useAuth();
-  // const history = useHistory();
+  const { user, registerUser } = useFirebase();
 
-  // // React hook form
-  // const { register, handleSubmit, formState: { errors } } = useForm();
-  // const onSubmit = data => {
-  //     console.log(data);
-  //     // Check password matching
-  //     if (data.password === data.password2) {
-  //         const fullName = `${data.firstName} ${data.lastName}`;
+  // React hook form
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+    // Check password matching
+    if (data.password === data.password2) {
+      const fullName = `${data.firstName} ${data.lastName}`;
 
-  //         registerUser(fullName, data.email, data.password, history);
-
-  //     }
-  //     else if (data.password !== data.password2) {
-  //         setAuthError('Password Did not Matched');
-  //     }
-  // };
+      registerUser(fullName, data.email, data.password);
+    } else if (data.password !== data.password2) {
+      alert("Password Did not Matched");
+    }
+  };
 
   return (
     <div className="login-container my-2">
@@ -31,17 +34,17 @@ const Register = () => {
         <h2 className="h3 mb-4">Please Register</h2>
       </div>
       <div className="login-form border rounded">
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-3">
             <label className="form-label">First Name</label>
             <input
               type="text"
               className="form-control"
-            //   {...register("firstName", { required: true })}
+              {...register("firstName", { required: true })}
             />
-            {/* {errors.firstName && (
+            {errors.firstName && (
               <span className="text-danger">This field is required</span>
-            )} */}
+            )}
           </div>
 
           <div className="mb-3">
@@ -49,11 +52,11 @@ const Register = () => {
             <input
               type="text"
               className="form-control"
-            //   {...register("lastName", { required: true })}
+              {...register("lastName", { required: true })}
             />
-            {/* {errors.lastName && (
+            {errors.lastName && (
               <span className="text-danger">This field is required</span>
-            )} */}
+            )}
           </div>
 
           <div className="mb-3">
@@ -61,12 +64,12 @@ const Register = () => {
             <input
               type="email"
               className="form-control"
-            //   defaultValue={user.email}
-            //   {...register("email", { required: true })}
+              defaultValue={user.email}
+              {...register("email", { required: true })}
             />
-            {/* {errors.email && (
+            {errors.email && (
               <span className="text-warning">This field is required</span>
-            )} */}
+            )}
           </div>
 
           <div className="mb-3">
@@ -74,11 +77,11 @@ const Register = () => {
             <input
               type="password"
               className="form-control"
-            //   {...register("password", { required: true })}
+              {...register("password", { required: true })}
             />
-            {/* {errors.password && (
+            {errors.password && (
               <span className="text-warning">This field is required</span>
-            )} */}
+            )}
           </div>
 
           <div className="mb-3">
@@ -86,11 +89,11 @@ const Register = () => {
             <input
               type="password"
               className="form-control"
-            //   {...register("password2", { required: true })}
+              {...register("password2", { required: true })}
             />
-            {/* {errors.password2 && (
+            {errors.password2 && (
               <span className="text-warning">This field is required</span>
-            )} */}
+            )}
           </div>
 
           <input
