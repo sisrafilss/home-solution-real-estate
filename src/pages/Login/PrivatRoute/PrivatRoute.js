@@ -8,8 +8,6 @@ const PrivatRoute = ({ children }) => {
   const location = useLocation();
   const loading = useSelector((state) => state.entities.user.loading);
 
-  console.log(loading);
-
 //   if (loading) {
 //     return <div className="spinner-border text-primary"></div>;
 //   }

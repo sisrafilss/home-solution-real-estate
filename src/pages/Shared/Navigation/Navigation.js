@@ -43,12 +43,6 @@ const Navigation = () => {
 
             <li className="nav-item">
               <a className="nav-link" href="#">
-                Sell
-              </a>
-            </li>
-
-            <li className="nav-item">
-              <a className="nav-link" href="#">
                 Home Loan
               </a>
             </li>

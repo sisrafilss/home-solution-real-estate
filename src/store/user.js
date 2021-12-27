@@ -6,6 +6,7 @@ let initialState = {
   loading: null,
   error: "",
   apiResponse: {},
+  admin: null,
 };
 
 const user = createSlice({
@@ -27,10 +28,19 @@ const user = createSlice({
     addUserToDB: (state, action) => {
       state.apiResponse = action.payload;
     },
+    setAdminStatus: (state, action) => {
+      state.admin = action.payload.admin;
+    },
   },
 });
 
-export const { setUser, setLoading, setAuthError, addUserToDB } = user.actions;
+export const {
+  setUser,
+  setLoading,
+  setAuthError,
+  addUserToDB,
+  setAdminStatus,
+} = user.actions;
 export default user.reducer;
 
 // Action Creator
@@ -52,4 +62,11 @@ export const upsertUser = (data) =>
     data,
     method: "put",
     onSuccess: addUserToDB.type,
+  });
+
+// Check an user role is admin or not
+export const checkAdminStatus = (email) =>
+  apiCallBegan({
+    url: url + "/" + email,
+    onSuccess: setAdminStatus.type,
   });

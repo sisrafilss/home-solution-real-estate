@@ -11,8 +11,6 @@ const TopProjects = () => {
     dispatch(loadTopProjects());
   }, []);
 
-  console.log(topProjects);
-
   return (
     <div>
       <div className="container">

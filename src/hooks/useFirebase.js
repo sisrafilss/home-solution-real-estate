@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import initializeAuthentication from "../pages/Login/Firebase/firebase.init";
 import {
+  checkAdminStatus,
   saveUserToDB,
   setAuthError,
   setLoading,
@@ -29,6 +30,7 @@ const useFirebase = () => {
   const user = useSelector((state) => state.entities.user.userInfo);
   const authError = useSelector((state) => state.entities.user.error);
   const loading = useSelector((state) => state.entities.user.loading);
+  const admin = useSelector((state) => state.entities.user.admin);
 
   // Register new user
   const registerUser = (name, email, password, navigate, location) => {
@@ -88,9 +90,8 @@ const useFirebase = () => {
     const googleProvider = new GoogleAuthProvider();
     signInWithPopup(auth, googleProvider)
       .then((result) => {
-        // console.log(result.user);
         const user = result.user;
-        // console.log(users.displayName);
+
         dispatch(
           setUser({
             email: user.email,
@@ -144,14 +145,19 @@ const useFirebase = () => {
     return () => unsubscribe;
   }, [auth]);
 
+  // Check whether user role is admin or not
+  dispatch(checkAdminStatus(user.email));
+
   return {
     user,
     authError,
     loading,
+    admin,
     signInWithGoogle,
     logOut,
     registerUser,
     loginWithEmailAndPassword,
+    
   };
 };
 

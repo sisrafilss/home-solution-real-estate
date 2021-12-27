@@ -1,0 +1,17 @@
+.dashboard-top {
+  background-color: #111;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+}
+.dashboard-top h3 {
+  color: #f1f1f1 !important;
+}
+
+.nested-routes {
+  margin-top: 120px;
+}
+
+.user-profile {
+  margin-left: 50% !important;
+}

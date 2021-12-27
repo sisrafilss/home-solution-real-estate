@@ -5,8 +5,9 @@ import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import Login from "./pages/Login/Login/Login";
 import Register from "./pages/Login/Register/Register";
 import PrivatRoute from "./pages/Login/PrivatRoute/PrivatRoute";
-import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
+
 import Rent from "./pages/Rent/Rent";
+import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
 
 function App() {
   return (

@@ -16,7 +16,7 @@ const Register = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+
     // Check password matching
     if (data.password === data.password2) {
       const fullName = `${data.firstName} ${data.lastName}`;
