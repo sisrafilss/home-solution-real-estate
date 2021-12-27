@@ -3,7 +3,9 @@ import { apiCallBegan } from "./api";
 
 const initialState = {
   saleFlats: [],
-  topSaleFlats: []
+  topSaleFlats: [],
+  flatDetail: {},
+  loading: false,
 };
 
 const flatSale = createSlice({
@@ -14,12 +16,24 @@ const flatSale = createSlice({
       state.saleFlats = action.payload;
     },
     setTopSalesFlats: (state, action) => {
-        state.topSaleFlats = action.payload;
-      },
+      state.topSaleFlats = action.payload;
+    },
+    singleFlatDetailRequested: (state, action) => {
+      state.loading = true;
+    },
+    setSingleFlatDetail: (state, action) => {
+      state.flatDetail = action.payload;
+      state.loading = false;
+    },
   },
 });
 
-export const { setSalesFlats, setTopSalesFlats } = flatSale.actions;
+export const {
+  setSalesFlats,
+  setTopSalesFlats,
+  setSingleFlatDetail,
+  singleFlatDetailRequested,
+} = flatSale.actions;
 export default flatSale.reducer;
 
 // Action
@@ -34,8 +48,14 @@ export const loadFlats = () =>
 //   Get Top Sale Flats
 export const loadTopFlats = () =>
   apiCallBegan({
-    url: '/top-sale-flats',
+    url: "/top-sale-flats",
     onSuccess: setTopSalesFlats.type,
   });
 
-
+//   Get Single Flat Detail
+export const loadSingleFlatDetail = (id) =>
+  apiCallBegan({
+    url: url + "/" + id,
+    onStart: singleFlatDetailRequested.type,
+    onSuccess: setSingleFlatDetail.type,
+  });

@@ -5,11 +5,13 @@ import upcommingProjectsReducer from "./upcommingProjects";
 import testimonialReducer from "./testimonials";
 import userReducer from "./user";
 import flatsReducer from "./flatSale";
+import orderReducer from './orders';
 
 export default combineReducers({
   topProjects: topProjectsReducer,
   uocommingProjects: upcommingProjectsReducer,
   testimonials: testimonialReducer,
   user: userReducer,
-  saleFlats: flatsReducer
+  saleFlats: flatsReducer,
+  orders: orderReducer,
 });

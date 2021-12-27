@@ -9,6 +9,7 @@ import PrivatRoute from "./pages/Login/PrivatRoute/PrivatRoute";
 import Rent from "./pages/Rent/Rent";
 import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
 import SaleFlats from "./pages/SaleFlats/SaleFlats";
+import PlaceOrder from "./pages/PlaceOrder/PlaceOrder/PlaceOrder";
 
 function App() {
   return (
@@ -23,6 +24,14 @@ function App() {
         element={
           <PrivatRoute>
             <Dashboard />
+          </PrivatRoute>
+        }
+      />
+      <Route
+        path="/sale-flats/:id"
+        element={
+          <PrivatRoute>
+            <PlaceOrder />
           </PrivatRoute>
         }
       />
