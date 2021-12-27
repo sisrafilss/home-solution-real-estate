@@ -12,7 +12,13 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import initializeAuthentication from "../pages/Login/Firebase/firebase.init";
-import { setAuthError, setLoading, setUser } from "../store/user";
+import {
+  saveUserToDB,
+  setAuthError,
+  setLoading,
+  setUser,
+  upsertUser,
+} from "../store/user";
 
 initializeAuthentication();
 
@@ -31,6 +37,9 @@ const useFirebase = () => {
       .then((userCredential) => {
         // Signed in
         dispatch(setAuthError({ error: "" }));
+
+        // Save user data to Database
+        dispatch(saveUserToDB({ name, email }));
 
         // Update user name to firebase
         updateProfile(auth.currentUser, {
@@ -90,6 +99,10 @@ const useFirebase = () => {
           })
         );
 
+        // Upsert user data to database
+        dispatch(upsertUser({ name: user.displayName, email: user.email }));
+
+        // Empty error for succfully login
         dispatch(setAuthError({ error: "" }));
 
         // Redirect user to the page where they come from
