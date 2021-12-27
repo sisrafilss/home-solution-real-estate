@@ -29,16 +29,20 @@ const Navigation = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link" to="/">Home</Link>
+              <Link className="nav-link" to="/">
+                Home
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="/buy-flats">
                 Buy
-              </a>
+              </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/rent">Rent</Link>
+              <Link className="nav-link" to="/rent">
+                Rent
+              </Link>
             </li>
 
             <li className="nav-item">
@@ -54,7 +58,9 @@ const Navigation = () => {
             </li>
             {user?.email && (
               <li className="nav-item  fitpal-nav-item me-4">
-                <Link className="nav-link" to="/dashboard">Dashboard</Link>
+                <Link className="nav-link" to="/dashboard">
+                  Dashboard
+                </Link>
               </li>
             )}
 
@@ -67,7 +73,9 @@ const Navigation = () => {
               </button>
             ) : (
               <li className="nav-item fitpal-nav-item me-4">
-                <Link className="nav-link" to="/login">Login</Link>
+                <Link className="nav-link" to="/login">
+                  Login
+                </Link>
               </li>
             )}
           </ul>

@@ -8,6 +8,7 @@ import PrivatRoute from "./pages/Login/PrivatRoute/PrivatRoute";
 
 import Rent from "./pages/Rent/Rent";
 import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
+import SaleFlats from "./pages/SaleFlats/SaleFlats";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/home" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/buy-flats" element={<SaleFlats />} />
       <Route
         path="/dashboard"
         element={

@@ -7,6 +7,7 @@ import RentHome from "../RentHome/RentHome";
 import Testimonials from "../Testimonials/Testimonials";
 import TopProjects from "../TopProjects/TopProjects";
 import UpCommingProjects from "../UpCommingProjects/UpCommingProjects";
+import TopSaleFlats from '../TopSaleFlats/TopSaleFlats';
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <Navigation />
       <Banner />
       <GreetingSection />
+      <TopSaleFlats />
       <TopProjects />
       <RentHome />
       <UpCommingProjects />
