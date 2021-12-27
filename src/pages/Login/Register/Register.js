@@ -1,11 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useFirebase from "../../../hooks/useFirebase";
 import logo from "../../../images/logo.png";
 
 const Register = () => {
-  const { user, registerUser } = useFirebase();
+  const { user, registerUser, authError, loading } = useFirebase();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   // React hook form
   const {
@@ -18,8 +20,8 @@ const Register = () => {
     // Check password matching
     if (data.password === data.password2) {
       const fullName = `${data.firstName} ${data.lastName}`;
-
-      registerUser(fullName, data.email, data.password);
+      // Register new user based on data
+      registerUser(fullName, data.email, data.password, navigate, location);
     } else if (data.password !== data.password2) {
       alert("Password Did not Matched");
     }
@@ -102,11 +104,13 @@ const Register = () => {
             value="Register"
           />
         </form>
-        {/* {authError && (
+        {loading && <div className="text-center"><div className="spinner-border text-primary"></div></div>}
+
+        {authError && (
           <div className="alert alert-danger mt-4" role="alert">
             {authError}
           </div>
-        )} */}
+        )}
       </div>
       <div
         className="border mt-4"

@@ -6,44 +6,76 @@ import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
   updateProfile,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import initializeAuthentication from "../pages/Login/Firebase/firebase.init";
-import { setUser } from "../store/user";
+import { setAuthError, setLoading, setUser } from "../store/user";
 
 initializeAuthentication();
 
 const useFirebase = () => {
-  const dispatch = useDispatch();
-  //   Get user info from Store (user)
-  const user = useSelector((state) => state.entities.user);
   const auth = getAuth();
+  const dispatch = useDispatch();
+  //   Get info from Store (user)
+  const user = useSelector((state) => state.entities.user.userInfo);
+  const authError = useSelector((state) => state.entities.user.error);
+  const loading = useSelector((state) => state.entities.user.loading);
 
   // Register new user
-  const registerUser = (name, email, password) => {
+  const registerUser = (name, email, password, navigate, location) => {
+    dispatch(setLoading({ loading: true }));
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
-        console.log(user);
+        dispatch(setAuthError({ error: "" }));
+
+        // Update user name to firebase
         updateProfile(auth.currentUser, {
           displayName: name,
         })
-          .then(() => {})
-          .catch((error) => {});
+          .then(() => {
+            dispatch(setAuthError({ error: "" }));
+            // Redirect user to the page where they come from
+            const from = location.state?.from?.pathname || "/";
+            navigate(from, { replace: true });
+          })
+          .catch((error) => {
+            dispatch(setAuthError({ error: error.message }));
+          });
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode);
-        console.log(errorMessage);
+        dispatch(setAuthError({ error: error.message }));
+      })
+      .finally(() => {
+        dispatch(setLoading({ loading: false }));
+      });
+  };
+
+  // Login with email and password
+  const loginWithEmailAndPassword = (email, password, navigate, location) => {
+    dispatch(setLoading({ loading: true }));
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        dispatch(setAuthError({ error: "" }));
+        // Redirect user to the page where they come from
+        const from = location.state?.from?.pathname || "/";
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        dispatch(setAuthError({ error: error.message }));
+      })
+      .finally(() => {
+        dispatch(setLoading({ loading: false }));
       });
   };
 
   //   Login with Google
-  const signInWithGoogle = () => {
+  const signInWithGoogle = (navigate, location) => {
+    dispatch(setLoading({ loading: true }));
     const googleProvider = new GoogleAuthProvider();
     signInWithPopup(auth, googleProvider)
       .then((result) => {
@@ -57,9 +89,18 @@ const useFirebase = () => {
             photoURL: user.photoURL,
           })
         );
+
+        dispatch(setAuthError({ error: "" }));
+
+        // Redirect user to the page where they come from
+        const from = location.state?.from?.pathname || "/";
+        navigate(from, { replace: true });
       })
       .catch((error) => {
-        // dispatch(setUsers({}));
+        dispatch(setAuthError({ error: error.message }));
+      })
+      .finally(() => {
+        dispatch(setLoading({ loading: false }));
       });
   };
 
@@ -92,9 +133,12 @@ const useFirebase = () => {
 
   return {
     user,
+    authError,
+    loading,
     signInWithGoogle,
     logOut,
     registerUser,
+    loginWithEmailAndPassword,
   };
 };
 
