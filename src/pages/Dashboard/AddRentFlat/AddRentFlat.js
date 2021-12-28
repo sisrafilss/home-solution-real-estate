@@ -1,10 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { addRentFlat } from "../../../store/adminDashboard";
+import { addRentFlat, setPageTitle } from "../../../store/adminDashboard";
 
 const AddRentFalt = () => {
   const dispatch = useDispatch();
+
+  // Set page title
+  dispatch(setPageTitle({ title: "Add Rent Flat" }));
 
   // React Hook Form
   const {

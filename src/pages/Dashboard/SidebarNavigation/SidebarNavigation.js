@@ -43,8 +43,6 @@ const SidebarNavigation = () => {
             <Link to="add-sale-flat">Add Sale Flat</Link>
             <Link to="add-rent-flat">Add Rent Flat</Link>
             <Link to="make-admin">Make Admin</Link>
-            <Link to="manage-products">Manage Products</Link>
-            <Link to="make-admin">Make Admin</Link>
             <Link to="manage-sale-flats">Manage Sale Flats</Link>
             <Link to="manage-rent-flats">Manage Rent Flats</Link>
           </div>

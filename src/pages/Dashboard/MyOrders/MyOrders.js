@@ -2,13 +2,15 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import useFirebase from "../../../hooks/useFirebase";
+import { setPageTitle } from "../../../store/adminDashboard";
 import { cancellAnOrder, loadMyOrders } from "../../../store/userDashboard";
 
 const MyOrders = () => {
   const { user } = useFirebase();
   const dispatch = useDispatch();
   const myOrders = useSelector((state) => state.entities.userDashboard.myOrders);
-  //   const [productState, setProductState] = useState(false);
+  
+  dispatch(setPageTitle({title: 'My Orders'}))
 
   // Load my orders from database
   useEffect(() => {

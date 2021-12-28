@@ -1,12 +1,16 @@
-import React from 'react';
-import useFirebase from '../../../hooks/useFirebase';
+import React from "react";
+import { useDispatch } from "react-redux";
+import useFirebase from "../../../hooks/useFirebase";
+import { setPageTitle } from "../../../store/adminDashboard";
 
 const LogOut = () => {
+  const { user, logOut } = useFirebase();
+  // Set page title
+  const dispatch = useDispatch();
+  dispatch(setPageTitle({ title: "Log Out" }));
 
-    const {user, logOut} = useFirebase();
-
-    return (
-        <div className="container my-5">
+  return (
+    <div className="container my-5">
       <div className="p-4 bg-secondary border rounded text-center text-light w-50 mx-auto">
         <h4>
           You are Logged In as:{" "}
@@ -21,7 +25,7 @@ const LogOut = () => {
         </button>
       </div>
     </div>
-    );
+  );
 };
 
 export default LogOut;

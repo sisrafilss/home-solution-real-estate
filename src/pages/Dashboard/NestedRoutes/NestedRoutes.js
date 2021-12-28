@@ -11,9 +11,10 @@ import AddRentFalt from "../AddRentFlat/AddRentFlat";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import ManageSaleFlat from "../ManageSaleFlat/ManageSaleFlat";
 import ManageRentFlat from "../ManageRentFlat/ManageRentFlat";
+import useFirebase from "../../../hooks/useFirebase";
 
 const NestedRoutes = () => {
-  //   const { admin } = useFirebase();
+  const { admin } = useFirebase();
   return (
     <Routes>
       {/* Separate Dashboard default page for admin ad subscriber */}
@@ -25,6 +26,19 @@ const NestedRoutes = () => {
                         <MyOrders setPageTitle={setPageTitle} />
                     </Route>
             } */}
+      {!admin ? (
+        <Route path="" element={<MyOrders />} />
+      ) : (
+        <Route
+          path=""
+          element={
+            <AdminRoute>
+              <AllOrders />
+            </AdminRoute>
+          }
+        />
+      )}
+
       <Route path="my-orders" element={<MyOrders />} />
       <Route path="payment" element={<Payment />} />
       <Route path="review" element={<Review />} />

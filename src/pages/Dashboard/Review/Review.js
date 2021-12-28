@@ -9,9 +9,15 @@ import {
   setReviewSubmitedStatus,
 } from "../../../store/userDashboard";
 import { useSelector } from "react-redux";
+import { setPageTitle } from "../../../store/adminDashboard";
 
 const Review = () => {
   const { user } = useFirebase();
+
+  // Set page title
+  const dispatch = useDispatch();
+  dispatch(setPageTitle({ title: "Review" }));
+
   // Get current review submitted status from store
   const reviewSubmited = useSelector(
     (state) => state.entities.userDashboard.reviewSubmited
@@ -19,7 +25,6 @@ const Review = () => {
 
   const [rating, setRating] = useState(null);
 
-  const dispatch = useDispatch();
 
   // Haqndle Rating
   const ratingChanged = (newRating) => {

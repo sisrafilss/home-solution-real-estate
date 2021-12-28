@@ -1,10 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { makeAnAdmin } from "../../../store/adminDashboard";
+import { makeAnAdmin, setPageTitle } from "../../../store/adminDashboard";
 
 const MakeAdmin = () => {
   const dispatch = useDispatch();
+  // Set page title
+  dispatch(setPageTitle({ title: "Make Admin" }));
+
   // React Hook Form
   const {
     register,

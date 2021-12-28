@@ -5,11 +5,15 @@ import {
   approveOrder,
   deleteOrder,
   loadOrders,
+  setPageTitle,
 } from "../../../store/adminDashboard";
 
 const AllOrders = () => {
   const dispatch = useDispatch();
   const orders = useSelector((state) => state.entities.adminDashboard.orders);
+
+  // Set page title
+  dispatch(setPageTitle({ title: "All Orders" }));
 
   // const [orders, setOrders] = useState([]);
   //   const [ordersChange, setOrdersChange] = useState(false);
