@@ -48,13 +48,6 @@ const Review = () => {
 
     console.log(review);
     dispatch(savedReview(review));
-
-    // axios.post("http://localhost:5000/review", review).then((res) => {
-    //   if (res.data.insertedId) {
-    //     setReviewSubmited(true);
-    //     reset();
-    //   }
-    // });
   };
 
   return (
