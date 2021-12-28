@@ -2,6 +2,7 @@ import React from "react";
 
 import "./GreetingSection.css";
 import apartment from "../../../images/apartment.jpg";
+import { Link } from "react-router-dom";
 
 const GreetingSection = () => {
   return (
@@ -28,7 +29,7 @@ const GreetingSection = () => {
               <p className="lead">
                 Explore from Apartments, land, builder floors, villas and more
               </p>
-              <button className="btn btn-primary">Explore Buying</button>
+              <Link to="/buy-flats" className="btn btn-primary">Explore Buying</Link>
             </div>
           </div>
         </div>

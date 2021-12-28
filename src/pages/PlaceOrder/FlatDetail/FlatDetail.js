@@ -1,12 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-const FlatDetail = () => {
+const FlatDetail = ({flatDetail}) => {
     let key = 0;
-  const flatDetail = useSelector(
-    (state) => state.entities?.saleFlats?.flatDetail
-  );
-
   const { name, image, price, detail } = flatDetail;
   return (
     <div>

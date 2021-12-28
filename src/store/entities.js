@@ -5,7 +5,8 @@ import upcommingProjectsReducer from "./upcommingProjects";
 import testimonialReducer from "./testimonials";
 import userReducer from "./user";
 import flatsReducer from "./flatSale";
-import orderReducer from './orders';
+import orderReducer from "./orders";
+import rentedFlatsReducer from "./rentedFlats";
 
 export default combineReducers({
   topProjects: topProjectsReducer,
@@ -14,4 +15,5 @@ export default combineReducers({
   user: userReducer,
   saleFlats: flatsReducer,
   orders: orderReducer,
+  rentedFlats: rentedFlatsReducer,
 });

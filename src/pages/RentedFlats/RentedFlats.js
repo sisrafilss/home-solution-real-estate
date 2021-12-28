@@ -1,16 +1,18 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadFlats } from "../../store/flatSale";
+import { loadRentedFlats } from "../../store/rentedFlats";
 import SingleProject from "../Home/SingleProject/SingleProject";
 import Footer from "../Shared/Footer/Footer/Footer";
 import Navigation from "../Shared/Navigation/Navigation";
 
-const SaleFlats = () => {
+const RentedFlats = () => {
   const dispatch = useDispatch();
-  const saleFlats = useSelector((state) => state.entities.saleFlats.saleFlats);
+  const rentedFlats = useSelector(
+    (state) => state.entities.rentedFlats.rentedFlats
+  );
 
   useEffect(() => {
-    dispatch(loadFlats());
+    dispatch(loadRentedFlats());
   }, []);
 
   return (
@@ -18,11 +20,11 @@ const SaleFlats = () => {
       <Navigation />
       <div className="container my-5">
         <div>
-          <h2 className="pt-3 py-3">Flats for Sale</h2>
+          <h2 className="pt-3 py-3">Flats for Rent</h2>
         </div>
         <div className="row row-cols-1 row-cols-md-4 g-4">
-          {saleFlats.map((project) => (
-            <SingleProject key={project._id} type="sale" project={project} />
+          {rentedFlats.map((project) => (
+            <SingleProject key={project._id} type="rent" project={project} />
           ))}
         </div>
       </div>
@@ -31,4 +33,4 @@ const SaleFlats = () => {
   );
 };
 
-export default SaleFlats;
+export default RentedFlats;

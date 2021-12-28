@@ -1,53 +1,51 @@
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
-import useFirebase from "../../../hooks/useFirebase";
-import { loadSingleFlatDetail } from "../../../store/flatSale";
-import { saveOrderToDb } from "../../../store/orders";
-import Footer from "../../Shared/Footer/Footer/Footer";
-import Navigation from "../../Shared/Navigation/Navigation";
-import FlatDetail from "../FlatDetail/FlatDetail";
-import "./PlaceOrder.css";
+import React, { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import useFirebase from '../../hooks/useFirebase';
+import { saveOrderToDb } from '../../store/orders';
+import { loadSingleRentFlat } from '../../store/rentedFlats';
+import FlatDetail from '../PlaceOrder/FlatDetail/FlatDetail';
+import Footer from '../Shared/Footer/Footer/Footer';
+import Navigation from '../Shared/Navigation/Navigation';
 
-const PlaceOrder = () => {
-  const { id } = useParams();
-  const { user } = useFirebase();
-  const dispatch = useDispatch();
+const PlaceRentOrder = () => {
 
-  // Set product detail to the store
-  useEffect(() => {
-    dispatch(loadSingleFlatDetail(id));
-  }, []);
-
-  const flatDetail = useSelector(
-    (state) => state.entities?.saleFlats?.flatDetail
-  );
-
-  const {
-    register,
-    reset,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => {
-    const order = {
-      ...data,
-      placedAt: new Date().toLocaleString(),
-      flatDetail,
-      orderType: 'buy'
+    const { id } = useParams();
+    const { user } = useFirebase();
+    const dispatch = useDispatch();
+  
+    // Set product detail to the store
+    useEffect(() => {
+      dispatch(loadSingleRentFlat(id));
+    }, []);
+  
+    const flatDetail = useSelector(
+      (state) => state.entities?.rentedFlats?.flatDetail
+    );
+  
+    const {
+      register,
+      reset,
+      handleSubmit,
+      formState: { errors },
+    } = useForm();
+    const onSubmit = (data) => {
+      const order = {
+        ...data,
+        placedAt: new Date().toLocaleString(),
+        flatDetail,
+        orderType: 'rent',
+      };
+      console.log(order);
+      dispatch(saveOrderToDb(order));
+      // if (insertedId) {
+      //   alert("Order Placed Successfully!");
+      //   dispatch(clearOrderInfo());
+      // }
     };
-    console.log(order);
-    dispatch(saveOrderToDb(order));
-    // if (insertedId) {
-    //   alert("Order Placed Successfully!");
-    //   dispatch(clearOrderInfo());
-    // }
-  };
-
-  return (
-    <div>
+    return (
+        <div>
       <Navigation />
       <FlatDetail flatDetail={flatDetail} />
 
@@ -151,7 +149,7 @@ const PlaceOrder = () => {
 
       <Footer />
     </div>
-  );
+    );
 };
 
-export default PlaceOrder;
+export default PlaceRentOrder;

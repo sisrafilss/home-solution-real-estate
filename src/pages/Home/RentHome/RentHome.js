@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import apartment from "../../../images/rent-home.jpg";
 import SectionHead from "../../Shared/SectionHead/SectionHead";
@@ -31,7 +32,7 @@ const RentHome = () => {
                 Finding and Renting Home are super simple and secure with Home
                 Solution
               </p>
-              <button className="btn btn-primary">Explore Buying</button>
+              <Link to="/buy-flats" className="btn btn-primary">Explore Renting</Link>
             </div>
           </div>
         </div>

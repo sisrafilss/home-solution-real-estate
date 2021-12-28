@@ -8,6 +8,7 @@ import Testimonials from "../Testimonials/Testimonials";
 import TopProjects from "../TopProjects/TopProjects";
 import UpCommingProjects from "../UpCommingProjects/UpCommingProjects";
 import TopSaleFlats from '../TopSaleFlats/TopSaleFlats';
+import TopRentedFlats from "../TopRentedFlats/TopRentedFlats";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
       <TopSaleFlats />
       <TopProjects />
       <RentHome />
+      <TopRentedFlats />
       <UpCommingProjects />
       <Testimonials />
       <Footer />

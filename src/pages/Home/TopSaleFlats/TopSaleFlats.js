@@ -10,7 +10,7 @@ const TopSaleFlats = () => {
 
   useEffect(() => {
     dispatch(loadTopFlats());
-  }, []); 
+  }, []);
 
   return (
     <>
@@ -20,7 +20,7 @@ const TopSaleFlats = () => {
         </div>
         <div className="row row-cols-1 row-cols-md-4 g-4">
           {saleFlats.map((project) => (
-            <SingleProject key={project._id} project={project} />
+            <SingleProject key={project._id} type="sale" project={project} />
           ))}
         </div>
         <div className="d-grid gap-2 mt-4">

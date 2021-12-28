@@ -10,6 +10,8 @@ import Rent from "./pages/Rent/Rent";
 import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
 import SaleFlats from "./pages/SaleFlats/SaleFlats";
 import PlaceOrder from "./pages/PlaceOrder/PlaceOrder/PlaceOrder";
+import RentedFlats from "./pages/RentedFlats/RentedFlats";
+import PlaceRentOrder from "./pages/PlaceRentOrder/PlaceRentOrder";
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/buy-flats" element={<SaleFlats />} />
+      <Route path="/rented-flats" element={<RentedFlats />} />
       <Route
         path="/dashboard"
         element={
@@ -32,6 +35,14 @@ function App() {
         element={
           <PrivatRoute>
             <PlaceOrder />
+          </PrivatRoute>
+        }
+      />
+      <Route
+        path="rented-flats/:id"
+        element={
+          <PrivatRoute>
+            <PlaceRentOrder />
           </PrivatRoute>
         }
       />

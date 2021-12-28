@@ -40,21 +40,9 @@ const Navigation = () => {
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/rent">
+              <Link className="nav-link" to="/rented-flats">
                 Rent
               </Link>
-            </li>
-
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Home Loan
-              </a>
-            </li>
-
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Help
-              </a>
             </li>
             {user?.email && (
               <li className="nav-item  fitpal-nav-item me-4">
