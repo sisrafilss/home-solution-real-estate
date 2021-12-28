@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import useFirebase from "../../../hooks/useFirebase";
+import NestedRoutes from "../NestedRoutes/NestedRoutes";
 import SidebarNavigation from "../SidebarNavigation/SidebarNavigation";
 
 import "./Dashboard.css";
@@ -32,7 +33,7 @@ const Dashboard = () => {
           )}
         </div>
         <div className="nested-routes">
-          {/* <NestedRoutes setPageTitle={setPageTitle} /> */}
+          <NestedRoutes />
         </div>
       </div>
     </div>

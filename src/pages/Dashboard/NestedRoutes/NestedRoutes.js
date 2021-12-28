@@ -1,37 +1,25 @@
-import React from 'react';
-import {
-    Switch,
-    Route,
-    useRouteMatch
-} from "react-router-dom";
-import useAuth from '../../../hooks/useAuth';
-import AdminRoute from '../../Login/AdminRoute/AdminRoute';
-import AddProduct from '../AddProduct/AddProduct';
-import LogOut from '../LogOut/LogOut';
-import MakeAdmin from '../MakeAdmin/MakeAdmin';
-import ManageAllOrders from '../ManageAllOrders/ManageAllOrders';
-import ManageProducts from '../ManageProducts/ManageProducts';
-import MyOrders from '../MyOrders/MyOrders';
-import Payment from '../Payment/Payment';
-import Review from '../Review/Review';
-const NestedRoutes = ({ setPageTitle }) => {
-    let { path } = useRouteMatch();
-    const { admin } = useAuth();
-    return (
-        <Switch>
-            {/* Separate Dashboard default page for admin ad subscriber */}
-            {
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+// import useFirebase from "../../../hooks/useFirebase";
+import MyOrders from "../MyOrders/MyOrders";
+
+const NestedRoutes = () => {
+//   const { admin } = useFirebase();
+  return (
+    <Routes>
+      {/* Separate Dashboard default page for admin ad subscriber */}
+      {/* {
                 admin ? <AdminRoute exact path={`${path}`}>
                     <ManageAllOrders setPageTitle={setPageTitle} />
                 </AdminRoute> :
                     <Route exact path={`${path}`}>
                         <MyOrders setPageTitle={setPageTitle} />
                     </Route>
-            }
-            <Route path={`${path}/my-orders`}>
-                <MyOrders setPageTitle={setPageTitle} />
-            </Route>
-            <Route path={`${path}/payment/:paymentId`}>
+            } */}
+      <Route path="my-orders" element={<MyOrders />} />
+      {/* <MyOrders setPageTitle={setPageTitle} /> */}
+      {/* </Route> */}
+      {/* <Route path={`${path}/payment/:paymentId`}>
                 <Payment setPageTitle={setPageTitle} />
             </Route>
             <Route path={`${path}/review`}>
@@ -52,9 +40,9 @@ const NestedRoutes = ({ setPageTitle }) => {
             </AdminRoute>
             <AdminRoute path={`${path}/manage-products`}>
                 <ManageProducts setPageTitle={setPageTitle} />
-            </AdminRoute>
-        </Switch>
-    );
+            </AdminRoute> */}
+    </Routes>
+  );
 };
 
 export default NestedRoutes;

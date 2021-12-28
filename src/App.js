@@ -23,7 +23,7 @@ function App() {
       <Route path="/buy-flats" element={<SaleFlats />} />
       <Route path="/rented-flats" element={<RentedFlats />} />
       <Route
-        path="/dashboard"
+        path="/dashboard/*"
         element={
           <PrivatRoute>
             <Dashboard />

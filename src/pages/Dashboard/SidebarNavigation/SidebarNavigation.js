@@ -7,7 +7,7 @@ import useFirebase from "../../../hooks/useFirebase";
 const SidebarNavigation = () => {
   //   let { url } = useRouteMatch();
   const { admin } = useFirebase();
-  let url = "something";
+  // let url = "something";
 
   return (
     <div>
@@ -29,23 +29,23 @@ const SidebarNavigation = () => {
         </Link>
       </div>
       <div className="sidenav">
-
+    
         {!admin && (
           <div>
-            <Link to={`${url}/my-orders`}>My Orders</Link>
-            <Link to={`${url}/payment`}>Payment</Link>
-            <Link to={`${url}/review`}>Review</Link>
+            <Link to="my-orders">My Orders</Link>
+            <Link to="payment">Payment</Link>
+            <Link to="review">Review</Link>
           </div>
         )}
         {admin && (
           <div>
-            <Link to={`${url}/manage-all-orders`}>All Orders</Link>
-            <Link to={`${url}/add-product`}>Add Product</Link>
-            <Link to={`${url}/make-admin`}>Make Admin</Link>
-            <Link to={`${url}/manage-products`}>Manage Products</Link>
+            <Link to="manage-all-orders">All Orders</Link>
+            <Link to="add-product">Add Product</Link>
+            <Link to="make-admin">Make Admin</Link>
+            <Link to="manage-products">Manage Products</Link>
           </div>
         )}
-        <Link to={`${url}/logout`}>Log Out</Link>
+        <Link to="logout">Log Out</Link>
       </div>
     </div>
   );
