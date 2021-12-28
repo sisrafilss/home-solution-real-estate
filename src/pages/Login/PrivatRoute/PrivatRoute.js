@@ -6,11 +6,15 @@ import useFirebase from "../../../hooks/useFirebase";
 const PrivatRoute = ({ children }) => {
   const { user } = useFirebase();
   const location = useLocation();
-  const loading = useSelector((state) => state.entities.user.loading);
 
-//   if (loading) {
-//     return <div className="spinner-border text-primary"></div>;
-//   }
+  const loading = useSelector((state) => state.entities.user.loading);
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center">
+        <div  className="spinner-border text-primary"></div>
+      </div>
+    );
+  }
 
   if (!user.email) {
     return <Navigate to="/login" state={{ from: location }} />;

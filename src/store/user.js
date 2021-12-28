@@ -3,7 +3,7 @@ import { apiCallBegan } from "./api";
 
 let initialState = {
   userInfo: {},
-  loading: null,
+  loading: true,
   error: "",
   apiResponse: {},
   admin: null,
@@ -21,6 +21,7 @@ const user = createSlice({
       user.userInfo.displayName = displayName;
       user.userInfo.email = email;
       user.userInfo.photoURL = photoURL;
+      user.loading = false;
     },
     setAuthError: (state, action) => {
       state.error = action.payload.error;
