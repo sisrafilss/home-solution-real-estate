@@ -8,6 +8,9 @@ import MyOrders from "../MyOrders/MyOrders";
 import Payment from "../Payment/Payment";
 import Review from "../Review/Review";
 import AddRentFalt from "../AddRentFlat/AddRentFlat";
+import MakeAdmin from "../MakeAdmin/MakeAdmin";
+import ManageSaleFlat from "../ManageSaleFlat/ManageSaleFlat";
+import ManageRentFlat from "../ManageRentFlat/ManageRentFlat";
 
 const NestedRoutes = () => {
   //   const { admin } = useFirebase();
@@ -47,6 +50,30 @@ const NestedRoutes = () => {
         element={
           <AdminRoute>
             <AddRentFalt />
+          </AdminRoute>
+        }
+      />
+      <Route
+        path="make-admin"
+        element={
+          <AdminRoute>
+            <MakeAdmin />
+          </AdminRoute>
+        }
+      />
+      <Route
+        path="manage-sale-flats"
+        element={
+          <AdminRoute>
+            <ManageSaleFlat />
+          </AdminRoute>
+        }
+      />
+      <Route
+        path="manage-rent-flats"
+        element={
+          <AdminRoute>
+            <ManageRentFlat />
           </AdminRoute>
         }
       />

@@ -38,6 +38,14 @@ const adminDashboard = createSlice({
         alert("Flat info successfully Saved!");
       }
     },
+    setMakeAnAdmin: (state, action) => {
+      if (action.payload.modifiedCount > 0) {
+        console.log(action.payload);
+        alert("User role set as Admin!");
+      } else {
+        alert("This user is already in Admin List!");
+      }
+    },
   },
 });
 
@@ -47,6 +55,7 @@ export const {
   setDeleteOrder,
   setAddSaleFlat,
   setAddRentFlat,
+  setMakeAnAdmin
 } = adminDashboard.actions;
 export default adminDashboard.reducer;
 
@@ -91,4 +100,12 @@ export const addRentFlat = (data) =>
     method: "post",
     data,
     onSuccess: setAddRentFlat.type,
+  });
+
+// Make an Admin
+export const makeAnAdmin = (email) =>
+  apiCallBegan({
+    url: `/make-admin/${email}`,
+    method: "put",
+    onSuccess: setMakeAnAdmin.type,
   });
