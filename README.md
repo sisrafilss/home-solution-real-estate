@@ -2,6 +2,8 @@
 
 Click this link to visit the live website: [https://home-solutions-ih.web.app/](https://home-solutions-ih.web.app/).
 
+Here is the [backend repository](https://github.com/sisrafilss/home-solution-server) and live backend [https://mighty-woodland-85261.herokuapp.com/](https://mighty-woodland-85261.herokuapp.com/) hosted on heroku.
+
 ## About [Home Solution](https://home-solutions-ih.web.app/)
 
 * It is a Real Estate company's website.
@@ -21,8 +23,5 @@ Click this link to visit the live website: [https://home-solutions-ih.web.app/](
 * `React JS`, and `Bootstrap 5` are used to design the UI, `React Router v6` is used to manage routes, `Firebase` is used for authentication, `Express JS` and `MongoDB` are used to manage the `REST APIs` and manipulate database operation.
 
 * I have used `Redux` for state management and APIs request handle.
-
-
-* 
 
 
