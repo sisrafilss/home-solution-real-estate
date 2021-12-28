@@ -28,11 +28,26 @@ const adminDashboard = createSlice({
         state.orders.splice(index, 1);
       }
     },
+    setAddSaleFlat: (state, action) => {
+      if (action.payload.insertedId) {
+        alert("Flat info successfully Saved!");
+      }
+    },
+    setAddRentFlat: (state, action) => {
+      if (action.payload.insertedId) {
+        alert("Flat info successfully Saved!");
+      }
+    },
   },
 });
 
-export const { setOrders, setApproveOrder, setDeleteOrder } =
-  adminDashboard.actions;
+export const {
+  setOrders,
+  setApproveOrder,
+  setDeleteOrder,
+  setAddSaleFlat,
+  setAddRentFlat,
+} = adminDashboard.actions;
 export default adminDashboard.reducer;
 
 // Action Creator
@@ -58,4 +73,22 @@ export const deleteOrder = (id) =>
     url: `${url}/${id}`,
     method: "delete",
     onSuccess: setDeleteOrder.type,
+  });
+
+// Add a sale flat
+export const addSaleFlat = (data) =>
+  apiCallBegan({
+    url: "/add-sale-flat",
+    method: "post",
+    data,
+    onSuccess: setAddSaleFlat.type,
+  });
+
+// Add a Rent flat
+export const addRentFlat = (data) =>
+  apiCallBegan({
+    url: "/add-rent-flat",
+    method: "post",
+    data,
+    onSuccess: setAddRentFlat.type,
   });

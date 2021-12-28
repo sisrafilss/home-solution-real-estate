@@ -1,11 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import AddSaleFalt from "../AddSaleFlat/AddSaleFalt";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import AllOrders from "../AllOrders/AllOrders";
 import LogOut from "../LogOut/LogOut";
 import MyOrders from "../MyOrders/MyOrders";
 import Payment from "../Payment/Payment";
 import Review from "../Review/Review";
+import AddRentFalt from "../AddRentFlat/AddRentFlat";
 
 const NestedRoutes = () => {
   //   const { admin } = useFirebase();
@@ -29,6 +31,22 @@ const NestedRoutes = () => {
         element={
           <AdminRoute>
             <AllOrders />
+          </AdminRoute>
+        }
+      />
+      <Route
+        path="add-sale-flat"
+        element={
+          <AdminRoute>
+            <AddSaleFalt />
+          </AdminRoute>
+        }
+      />
+      <Route
+        path="add-rent-flat"
+        element={
+          <AdminRoute>
+            <AddRentFalt />
           </AdminRoute>
         }
       />
