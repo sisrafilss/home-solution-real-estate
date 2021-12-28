@@ -26,7 +26,6 @@ const PlaceRentOrder = () => {
   
     const {
       register,
-      reset,
       handleSubmit,
       formState: { errors },
     } = useForm();

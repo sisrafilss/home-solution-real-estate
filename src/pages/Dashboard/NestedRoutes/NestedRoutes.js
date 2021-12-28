@@ -1,14 +1,14 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import AdminRoute from "../AdminRoute/AdminRoute";
+import AllOrders from "../AllOrders/AllOrders";
 import LogOut from "../LogOut/LogOut";
-// import useFirebase from "../../../hooks/useFirebase";
 import MyOrders from "../MyOrders/MyOrders";
 import Payment from "../Payment/Payment";
 import Review from "../Review/Review";
 
-
 const NestedRoutes = () => {
-//   const { admin } = useFirebase();
+  //   const { admin } = useFirebase();
   return (
     <Routes>
       {/* Separate Dashboard default page for admin ad subscriber */}
@@ -24,7 +24,15 @@ const NestedRoutes = () => {
       <Route path="payment" element={<Payment />} />
       <Route path="review" element={<Review />} />
       <Route path="logout" element={<LogOut />} />
-      
+      <Route
+        path="orders"
+        element={
+          <AdminRoute>
+            <AllOrders />
+          </AdminRoute>
+        }
+      />
+
       {/* 
 
 

@@ -7,7 +7,8 @@ import userReducer from "./user";
 import flatsReducer from "./flatSale";
 import orderReducer from "./orders";
 import rentedFlatsReducer from "./rentedFlats";
-import userDashboardReducer from './userDashboard';
+import userDashboardReducer from "./userDashboard";
+import adminDashboardReducer from "./adminDashboard";
 
 export default combineReducers({
   topProjects: topProjectsReducer,
@@ -17,5 +18,6 @@ export default combineReducers({
   saleFlats: flatsReducer,
   orders: orderReducer,
   rentedFlats: rentedFlatsReducer,
-  userDashboard: userDashboardReducer
+  userDashboard: userDashboardReducer,
+  adminDashboard: adminDashboardReducer,
 });

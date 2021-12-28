@@ -39,7 +39,7 @@ const SidebarNavigation = () => {
         )}
         {admin && (
           <div>
-            <Link to="manage-all-orders">All Orders</Link>
+            <Link to="orders">All Orders</Link>
             <Link to="add-product">Add Product</Link>
             <Link to="make-admin">Make Admin</Link>
             <Link to="manage-products">Manage Products</Link>
