@@ -40,6 +40,7 @@ const MyOrders = () => {
                     <th scope="col">Price</th>
                     <th scope="col">Placed At</th>
                     <th scope="col">Order Status</th>
+                    <th scope="col">Type</th>
                     <th scope="col">Payment</th>
                     <th scope="col">Cancel</th>
                   </tr>
@@ -62,6 +63,7 @@ const MyOrders = () => {
                       <td> ${order?.flatDetail?.price} </td>
                       <td> {order?.placedAt} </td>
                       <td> {order?.status} </td>
+                      <td> {order?.orderType} </td>
                       <td>
                         {order?.payment ? (
                           "Paid"

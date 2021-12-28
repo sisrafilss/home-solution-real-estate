@@ -36,7 +36,7 @@ const PlaceOrder = () => {
       ...data,
       placedAt: new Date().toLocaleString(),
       flatDetail,
-      orderType: 'buy'
+      orderType: 'Buy'
     };
     console.log(order);
     dispatch(saveOrderToDb(order));

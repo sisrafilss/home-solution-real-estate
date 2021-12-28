@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import LogOut from "../LogOut/LogOut";
 // import useFirebase from "../../../hooks/useFirebase";
 import MyOrders from "../MyOrders/MyOrders";
 import Payment from "../Payment/Payment";
@@ -22,11 +23,10 @@ const NestedRoutes = () => {
       <Route path="my-orders" element={<MyOrders />} />
       <Route path="payment" element={<Payment />} />
       <Route path="review" element={<Review />} />
+      <Route path="logout" element={<LogOut />} />
       
       {/* 
-            <Route path={`${path}/logout`}>
-                <LogOut setPageTitle={setPageTitle} />
-            </Route>
+
 
             <AdminRoute path={`${path}/manage-all-orders`}>
                 <ManageAllOrders setPageTitle={setPageTitle} />
